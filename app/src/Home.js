@@ -8,13 +8,13 @@ function Home() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Welcome to my site! Last updated 2/23/21 2:49pm
+          Welcome to my demo site! 
         </p>
         <a
           className="App-link"
           href="/shoppingList"
         >
-          Let's try some functions!
+          Let's check out the top tv shows in 2020
         </a>
         <a 
           className="App-link"

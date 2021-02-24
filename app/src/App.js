@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Home from './Home';
-import ShoppingList from './ShoppingList';
+import TopTVShows2020 from './TopTVShows2020';
 
 import {
   BrowserRouter as Router,
@@ -18,7 +18,7 @@ class App extends React.Component {
       <div>
         <Switch>
           <Route path="/" component={Home} exact/>
-          <Route path="/shoppingList/" component={ShoppingList}/>
+          <Route path="/tvShows/" component={TopTVShows2020}/>
         </Switch>
       </div>
       </Router>
