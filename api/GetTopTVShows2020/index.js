@@ -4,11 +4,11 @@ module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
     var path = context.executionContext.functionDirectory + '/movies.json';
-    var jsonData = "";
+    var jsonData = path;
+    var error = "";
     fs.readFile(path, 'utf8', function (err, data) {
         if (err) {
-            context.log.error(err);
-            context.done(err);
+            error = err;
         }
 
         jsonData = data;
@@ -28,6 +28,6 @@ module.exports = async function (context, req) {
     }
 
     context.res = {
-        body: JSON.stringify(jsonData)
+        body: jsonData + error
     } 
 };
