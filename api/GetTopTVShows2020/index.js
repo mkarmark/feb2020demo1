@@ -20,10 +20,7 @@ module.exports = async function (context, req) {
         ]
     }
 
-    if (req.method == "GET")
-    {
-        context.res = {
-            body: JSON.stringify(TopTVShows2020)
-        }
-    }    
+    context.res = {
+        body: JSON.stringify(TopTVShows2020)
+    } 
 };
