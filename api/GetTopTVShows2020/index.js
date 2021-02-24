@@ -21,6 +21,6 @@ module.exports = async function (context, req) {
     }
 
     context.res = {
-        body: JSON.stringify(TopTVShows2020)
+        body: JSON.stringify(topTVShows2020)
     } 
 };
