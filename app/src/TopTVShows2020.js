@@ -35,6 +35,7 @@ class TopTVShows2020 extends React.Component {
       showAddInput: true,
       tvShowToAdd: ""
     })
+    window.location.reload()
   }
 
   handleAddSubmit()
