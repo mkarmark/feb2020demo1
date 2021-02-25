@@ -51,5 +51,17 @@
   },
   "globalHeaders": {
     "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
+  },
+  "auth": {
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "enabled": true,
+        "registration": {
+          "openIdIssuer": "https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47",
+          "clientId": "cf978515-3bd2-4632-9a88-84610d244ada",
+          "clientSecretSettingName": "AAD_SECRET"
+        }
+      }
+    }
   }
 } 
