@@ -1,44 +1,9 @@
 { 
   "routes": [ 
     {
-      "route": "/*.jpg",
-      "redirect": "https://www.google.com"
-    },
-    {
-      "route": "/logout",
-      "rewrite": "/.auth/logout"
-    },
-    {
-      "route": "/foo1",
-      "redirect": "https://google.com/hi"
-    },
-    {
-      "route": "/bar",
-      "statusCode": "301",
-      "allowedRoles": ["admin"],
-      "redirect": "/about"
-    },
-    {
-      "route": "/baz",
-      "redirect": "/about"
-    },
-    {
-      "route": "/about/*",
-      "allowedRoles": ["authenticated", "admin"],
-      "rewrite": "/about"
-    },
-    {
-      "route": "/admin",
-      "rewrite": "/admin"
-    },
-    {
-      "route": "/me",
-      "redirect": "/.auth/me"
-    },
-    {
-      "route": "/api/PostList",
-      "methods": ["PUT", "POST"],
-      "allowedRoles": ["authenticated"]
+      "route": "/api/*",
+      "methods": ["POST", "DELETE"],
+      "allowedRoles": [ "friends" ]
     }
   ],
   "navigationFallback": {
