@@ -2,13 +2,23 @@ import React from 'react';
 import './App.css';
 
 class TopTVShows2020 extends React.Component {
-  state = {
-    loading: true,
-    error: false,
-    fetchedData: [],
-    showAddInput: false,
-    tvShowToAdd: "",
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+      error: false,
+      fetchedData: [],
+      showAddInput: false,
+      tvShowToAdd: "",
+    }
+
+    this.onAddClick = this.onAddClick.bind(this);
+    this.handleAddSubmit = this.handleAddSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+
   }
+
+  
 
   componentDidMount() {
     fetch("/api/tvshows", {method: "get"})
