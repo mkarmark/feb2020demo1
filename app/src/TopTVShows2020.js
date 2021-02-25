@@ -69,7 +69,7 @@ class TopTVShows2020 extends React.Component {
 			)
 		)
 		}
-    {showAddInput ? (
+    {this.state.showAddInput ? (
     <form onSubmit={this.handleAddSubmit}>
       <label>
         TV Show Name:
