@@ -2,10 +2,6 @@ import React from 'react';
 import './App.css';
 
 class Puppies extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     var min = 1;
     var max = 4;
@@ -16,7 +12,7 @@ class Puppies extends React.Component {
       <header className="App-header">
       <h1>Random puppy image!</h1>
       <br/>
-      <img src={imgLocation} />
+      <img src={imgLocation} alt="Puppy!" />
       </header>
     </div>
     )
