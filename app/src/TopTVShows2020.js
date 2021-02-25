@@ -57,6 +57,7 @@ class TopTVShows2020 extends React.Component {
           error: false
         })
       })
+      window.location.reload()
   }
 
   render() {
