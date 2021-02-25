@@ -1,3 +1,4 @@
+import { Button } from 'bootstrap';
 import React from 'react';
 import './App.css';
 
@@ -6,10 +7,12 @@ class TopTVShows2020 extends React.Component {
     loading: true,
     error: false,
     fetchedData: [],
+    showAddInput: false,
+    tvShowToAdd: "",
   }
 
   componentDidMount() {
-    fetch("/api/GetTopTVShows2020", {method: "get"})
+    fetch("/api/tvshows", {method: "get"})
       .then(response => {
         return response.json()
       })
@@ -17,6 +20,31 @@ class TopTVShows2020 extends React.Component {
         this.setState({
           fetchedData: json.results,
           loading: false,
+        })
+      })
+  }
+
+  onAddClick()
+  {
+    this.setState({
+      showAddInput: true
+    })
+  }
+
+  handleAddSubmit()
+  {
+    var tvShowName = this.state.tvShowToAdd;
+    var blobName = tvShowName.replace(" ", "").toLowerCase();
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title: 'tvShowName' })
+    };
+    fetch("/api/tvshows?blobName=" + blobName, requestOptions)
+      .then(json => {
+        this.setState({
+          tvShowToAdd: "",
+          showAddInput: false,
         })
       })
   }
@@ -34,7 +62,7 @@ class TopTVShows2020 extends React.Component {
           fetchedData.map(tvShow => (
 			<div class="row marketing">
 				<div class="col">
-				  <h2>{JSON.stringify(tvShow)} </h2>
+				  <h2>{tvShow.title} </h2>
 		  		<br/><br/>
 				</div>
 			</div>
@@ -42,6 +70,17 @@ class TopTVShows2020 extends React.Component {
 			)
 		)
 		}
+    {showAddInput ? (
+    <form onSubmit={this.handleAddSubmit}>
+      <label>
+        TV Show Name:
+        <input type="text" value={this.state.tvShowToAdd} onChange={this.handleChange} />
+      </label>
+      <input type="submit" value="Submit" />
+    </form>
+    ) : (
+    <button onclick={onAddClick}>Add TV Show</button>
+    )}
       </header>
     </div>
     )
