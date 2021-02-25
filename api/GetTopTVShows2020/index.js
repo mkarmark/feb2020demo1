@@ -1,6 +1,19 @@
 var fs = require('fs');
 const { BlobServiceClient } = require("@azure/storage-blob");
 
+async function streamToString(readableStream) {
+    return new Promise((resolve, reject) => {
+      const chunks = [];
+      readableStream.on("data", (data) => {
+        chunks.push(data.toString());
+      });
+      readableStream.on("end", () => {
+        resolve(chunks.join(""));
+      });
+      readableStream.on("error", reject);
+    });
+  }
+
 module.exports = async function (context, req) {
     const connectionString = process.env.STORAGE_CONNECTION_STRING;
     const containerName = process.env.STORAGE_CONTAINER;
@@ -31,6 +44,14 @@ module.exports = async function (context, req) {
         new Date(b.properties.lastModified) - new Date(a.properties.lastModified)
         );
     });
+
+    const blobContents = [];
+    for (var blob of blobs)
+    {
+        var blobClient = containerClient.getBlobClient(blob.name);
+        var streamResponse = await blobClient.DownloadAsync();
+        blobContents.push(await streamToString(streamResponse.readableStreamBody))
+    }
 
     context.res = {
         headers: { "Content-Type": "application/json" },
