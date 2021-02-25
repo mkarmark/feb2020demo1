@@ -60,6 +60,16 @@ class TopTVShows2020 extends React.Component {
       this.render()
   }
 
+  handleChange(event) {
+    this.setState({
+      fetchedData: this.state.fetchedData,
+      loading: false,
+      error: false,
+      showAddInput: true,
+      tvShowToAdd: event.target.value
+    })
+  }
+
   render() {
     const { loading, fetchedData } = this.state
     return (
@@ -85,7 +95,7 @@ class TopTVShows2020 extends React.Component {
     <form onSubmit={this.handleAddSubmit}>
       <label>
         TV Show Name:
-        <input type="text" value={this.state.tvShowToAdd}/>
+        <input type="text" value={this.state.tvShowToAdd}  onChange={this.handleChange} />
       </label>
       <input type="submit" value="Submit" />
     </form>
