@@ -3,7 +3,7 @@
     {
       "route": "/api/tvshows",
       "methods": ["POST", "DELETE"],
-      "allowedRoles": [ "friends" ]
+      "allowedRoles": [ "authenticated" ]
     },
     {
       "route": "/puppies/*",
