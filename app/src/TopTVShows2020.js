@@ -49,7 +49,7 @@ class TopTVShows2020 extends React.Component {
   handleAddSubmit()
   {
     var tvShowName = this.state.tvShowToAdd;
-    var blobName = tvShowName.replace(" ", "").toLowerCase();
+    var blobName = tvShowName.replace(" ", "").replace("'","").toLowerCase();
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -98,7 +98,6 @@ class TopTVShows2020 extends React.Component {
 			<div class="row marketing">
 				<div class="col">
 				  <h4>{tvShow} </h4>
-		  		<br/><br/>
 				</div>
 			</div>
 			)
