@@ -12,23 +12,10 @@ function Home() {
         </p>
         <a
           className="App-link"
-          href="/shoppingList"
+          href="/tvshows"
         >
           Let's check out the top tv shows in 2020
         </a>
-        <a 
-          className="App-link"
-          href="/about/"
-        >
-        Gated content
-        </a>
-		        <a 
-          className="App-link"
-          href="/.auth/login/facebook"
-        >
-        Log in with Facebook
-        </a>
-
       </header>
     </div>
   );

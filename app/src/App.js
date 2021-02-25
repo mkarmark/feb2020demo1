@@ -3,13 +3,13 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Home from './Home';
 import TopTVShows2020 from './TopTVShows2020';
+import Puppies from './Puppies';
 
 import {
   BrowserRouter as Router,
   Route,
   Switch
 } from 'react-router-dom'
-
 
 class App extends React.Component {
   render() {
@@ -19,6 +19,7 @@ class App extends React.Component {
         <Switch>
           <Route path="/" component={Home} exact/>
           <Route path="/tvShows/" component={TopTVShows2020}/>
+          <Route path="/puppies/" component={Puppies}/>
         </Switch>
       </div>
       </Router>
