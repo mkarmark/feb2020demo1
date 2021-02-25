@@ -35,7 +35,7 @@ module.exports = async function (context, req) {
     const blobContents = [];
     for (var blob of blobs)
     {
-        var blobClient = containerClient.getBlobClient(blobName);
+        var blobClient = containerClient.getBlobClient(blob.name);
 
         // Get blob content from position 0 to the end
         // In Node.js, get downloaded data by accessing downloadBlockBlobResponse.readableStreamBody
