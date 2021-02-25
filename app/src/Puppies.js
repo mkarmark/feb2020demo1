@@ -4,7 +4,7 @@ import './App.css';
 class Puppies extends React.Component {
   render() {
     var min = 1;
-    var max = 4;
+    var max = 4.9;
     var rand =  Math.floor(min + (Math.random() * (max-min)));
     var imgLocation = "/puppies/puppy" + rand + ".jpg";
     return (
