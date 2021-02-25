@@ -73,12 +73,12 @@ class TopTVShows2020 extends React.Component {
     <form onSubmit={this.handleAddSubmit}>
       <label>
         TV Show Name:
-        <input type="text" value={this.state.tvShowToAdd} onChange={this.handleChange} />
+        <input type="text" value={this.state.tvShowToAdd}/>
       </label>
       <input type="submit" value="Submit" />
     </form>
     ) : (
-    <button onclick={onAddClick}>Add TV Show</button>
+    <button onclick={this.onAddClick}>Add TV Show</button>
     )}
       </header>
     </div>
