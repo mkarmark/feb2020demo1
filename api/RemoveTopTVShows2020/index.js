@@ -19,7 +19,7 @@ module.exports = async function (context, req) {
     );
 
     const blockBlobClient = containerClient.getBlockBlobClient(blobName);
-    const deleteBlobResponse = await blockBlobClient.deleteBlob(blobStringToAdd);
+    const deleteBlobResponse = await blockBlobClient.delete();
 
     context.res = {
         status: deleteBlobResponse.status
