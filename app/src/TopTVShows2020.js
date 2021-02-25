@@ -35,7 +35,7 @@ class TopTVShows2020 extends React.Component {
       showAddInput: true,
       tvShowToAdd: ""
     })
-    window.location.reload()
+    this.render()
   }
 
   handleAddSubmit()
@@ -57,7 +57,7 @@ class TopTVShows2020 extends React.Component {
           error: false
         })
       })
-      window.location.reload()
+      this.render()
   }
 
   render() {
