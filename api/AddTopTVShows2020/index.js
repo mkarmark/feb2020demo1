@@ -7,6 +7,7 @@ module.exports = async function (context, req) {
     const accountName = process.env.STORAGE_ACCOUNT;
 
     var blobName = req.query.blobName
+    var title = JSON.stringify(req.body.title);
 
     // create a new instance of blogServiceClient from the Azure Storage SDK
     const blobServiceClient = BlobServiceClient.fromConnectionString(
@@ -19,7 +20,7 @@ module.exports = async function (context, req) {
     );
 
     const blockBlobClient = containerClient.getBlockBlobClient(blobName);
-    const uploadBlobResponse = await blockBlobClient.upload(req.body, blobStringToAdd.length);
+    const uploadBlobResponse = await blockBlobClient.upload(title, blobStringToAdd.length);
 
     context.res = {
         status: uploadBlobResponse.status

@@ -19,6 +19,9 @@ class TopTVShows2020 extends React.Component {
         this.setState({
           fetchedData: json.results,
           loading: false,
+          error: false,
+          showAddInput: false,
+          tvShowToAdd: ""
         })
       })
   }
@@ -26,7 +29,11 @@ class TopTVShows2020 extends React.Component {
   onAddClick()
   {
     this.setState({
-      showAddInput: true
+      fetchedData: this.state.fetchedData,
+      loading: false,
+      error: false,
+      showAddInput: true,
+      tvShowToAdd: ""
     })
   }
 
@@ -44,6 +51,9 @@ class TopTVShows2020 extends React.Component {
         this.setState({
           tvShowToAdd: "",
           showAddInput: false,
+          fetchedData: this.state.fetchedData,
+          loading: false,
+          error: false
         })
       })
   }
@@ -61,7 +71,7 @@ class TopTVShows2020 extends React.Component {
           fetchedData.map(tvShow => (
 			<div class="row marketing">
 				<div class="col">
-				  <h2>{tvShow.title} </h2>
+				  <h2>{JSON.stringify(tvShow)} </h2>
 		  		<br/><br/>
 				</div>
 			</div>
