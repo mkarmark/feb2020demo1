@@ -16,10 +16,6 @@
       "statusCode": 404
     },
     {
-      "route": "/.auth/login/aad",
-      "statusCode": 404
-    },
-    {
       "route": "/.auth/login/facebook",
       "statusCode": 404
     },
@@ -28,8 +24,12 @@
       "statusCode": 404
     },
     {
-      "route": "/login",
+      "route": "/googleLogin",
       "rewrite": "/.auth/login/google"
+    },
+    {
+      "route": "/aadLogin",
+      "rewrite": "/.auth/login/aad"
     },
     {
       "route": "/logout",
