@@ -55,14 +55,14 @@ class TopTVShows2020 extends React.Component {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title: 'tvShowName' })
+      body: JSON.stringify({ title: tvShowName })
     };
     fetch("/api/tvshows?blobName=" + blobName, requestOptions)
       .then(json => {
         this.setState({
           tvShowToAdd: "",
           showAddInput: false,
-          fetchedData: this.state.fetchedData,
+          fetchedData: this.state.fetchedData.push(tvShowName),
           loading: false,
           error: false
         })
@@ -101,7 +101,7 @@ class TopTVShows2020 extends React.Component {
 			)
 		)
 		}
-    {true ? (
+    {this.state.showAddInput ? (
     <form onSubmit={this.handleAddSubmit}>
       <label>
         TV Show Name:
