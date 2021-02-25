@@ -16,6 +16,12 @@ function Home() {
         >
           Let's check out the top tv shows in 2020
         </a>
+        <a
+          className="App-link"
+          href="/puppies"
+        >
+          Random puppy image generator
+        </a>
       </header>
     </div>
   );

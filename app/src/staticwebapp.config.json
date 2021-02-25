@@ -1,20 +1,51 @@
 { 
   "routes": [ 
     {
-      "route": "/api/*",
+      "route": "/api/tvshows",
       "methods": ["POST", "DELETE"],
       "allowedRoles": [ "friends" ]
+    },
+    {
+      "route": "/puppies/*",
+      "headers": {
+          "cache-control": "must-revalidate, max-age=15770000"
+      }
+    },
+    {
+      "route": "/.auth/login/twitter",
+      "statusCode": 404
+    },
+    {
+      "route": "/.auth/login/aad",
+      "statusCode": 404
+    },
+    {
+      "route": "/.auth/login/facebook",
+      "statusCode": 404
+    },
+    {
+      "route": "/.auth/login/github",
+      "statusCode": 404
+    },
+    {
+      "route": "/login",
+      "rewrite": "/.auth/login/google"
+    },
+    {
+      "route": "/logout",
+      "rewrite": "/.auth/logout"
     }
   ],
   "navigationFallback": {
     "rewrite": "index.html",
-    "exclude": [ "*.{jpg}" ]
+    "exclude": [ "*.{jpg,png}" ]
   },
-  "responseErrorOverrides": {
+  "responseOverrides": {
     "404": {
+      "rewrite": "/notfound.html"
     }
   },
   "globalHeaders": {
-    "a": "b"
+    "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
   }
 } 

@@ -18,8 +18,6 @@ class TopTVShows2020 extends React.Component {
 
   }
 
-  
-
   componentDidMount() {
     fetch("/api/tvshows", {method: "get"})
       .then(response => {
@@ -58,14 +56,20 @@ class TopTVShows2020 extends React.Component {
       body: JSON.stringify({ title: tvShowName })
     };
     fetch("/api/tvshows?blobName=" + blobName, requestOptions)
-      .then(json => {
-        this.setState({
-          tvShowToAdd: "",
-          showAddInput: false,
-          fetchedData: this.state.fetchedData.push(tvShowName),
-          loading: false,
-          error: false
-        })
+      .then(val => {
+        fetch("/api/tvshows", {method: "get"})
+          .then(response => {
+            return response.json()
+          })
+          .then(json => {
+            this.setState({
+              fetchedData: json,
+              loading: false,
+              error: false,
+              showAddInput: false,
+              tvShowToAdd: ""
+            })
+          })
       })
       this.render()
   }
