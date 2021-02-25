@@ -115,6 +115,13 @@ class TopTVShows2020 extends React.Component {
     ) : (
     <button onclick={this.onAddClick}>Add TV Show</button>
     )}
+    <br/>
+    <a
+          className="App-link"
+          href="/"
+        >
+          Go Back
+        </a>
       </header>
     </div>
     )
