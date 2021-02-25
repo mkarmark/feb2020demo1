@@ -6,9 +6,9 @@
       "direction": "in",
       "name": "req",
       "methods": [
-        "get"
+        "delete"
       ],
-	  "route": "GetList"
+	  "route": "RemoveTopTVShows2020"
     },
     {
       "type": "http",
