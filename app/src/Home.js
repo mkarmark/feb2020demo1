@@ -14,7 +14,7 @@ function Home() {
           className="App-link"
           href="/tvshows"
         >
-          Let's check out the top tv shows in 2020
+          Let's check out Mitali's quarantine TV journal
         </a>
         <a
           className="App-link"

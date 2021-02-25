@@ -89,7 +89,7 @@ class TopTVShows2020 extends React.Component {
     return (
     <div className="App">
       <header className="App-header">
-      <h1>Top TV Shows</h1>
+      <h1>TV Shows I've watched in the pandemic</h1>
         {loading ? (
           <p>Searching for tv shows ..... </p>
 		) : 
@@ -97,7 +97,7 @@ class TopTVShows2020 extends React.Component {
           fetchedData.map(tvShow => (
 			<div class="row marketing">
 				<div class="col">
-				  <h2>{JSON.stringify(tvShow)} </h2>
+				  <h4>{tvShow} </h4>
 		  		<br/><br/>
 				</div>
 			</div>

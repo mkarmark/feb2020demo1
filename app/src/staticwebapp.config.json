@@ -34,6 +34,10 @@
     {
       "route": "/logout",
       "rewrite": "/.auth/logout"
+    },
+    {
+      "route": "/tvshow",
+      "redirect": "/tvshows"
     }
   ],
   "navigationFallback": {
