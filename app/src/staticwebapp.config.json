@@ -14,9 +14,6 @@
     "404": {
     }
   },
-  "mimeTypes": { 
-    ".jpg": "application/json"
-  },
   "globalHeaders": {
     "a": "b"
   }
