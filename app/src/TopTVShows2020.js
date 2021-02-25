@@ -17,7 +17,7 @@ class TopTVShows2020 extends React.Component {
       })
       .then(json => {
         this.setState({
-          fetchedData: json.results,
+          fetchedData: json,
           loading: false,
           error: false,
           showAddInput: false,
