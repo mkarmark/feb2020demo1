@@ -1,19 +1,6 @@
 var fs = require('fs');
 const { BlobServiceClient } = require("@azure/storage-blob");
 
-async function streamToString(readableStream) {
-    return new Promise((resolve, reject) => {
-      const chunks = [];
-      readableStream.on("data", (data) => {
-        chunks.push(data.toString());
-      });
-      readableStream.on("end", () => {
-        resolve(chunks.join(""));
-      });
-      readableStream.on("error", reject);
-    });
-  }
-
 module.exports = async function (context, req) {
     const connectionString = process.env.STORAGE_CONNECTION_STRING;
     const containerName = process.env.STORAGE_CONTAINER;
@@ -48,13 +35,35 @@ module.exports = async function (context, req) {
     const blobContents = [];
     for (var blob of blobs)
     {
-        var blobClient = containerClient.getBlobClient(blob.name);
-        var streamResponse = await blobClient.DownloadAsync();
-        blobContents.push(await streamToString(streamResponse.readableStreamBody))
+        var blobClient = containerClient.getBlobClient(blobName);
+
+        // Get blob content from position 0 to the end
+        // In Node.js, get downloaded data by accessing downloadBlockBlobResponse.readableStreamBody
+        var downloadBlockBlobResponse = await blobClient.download();
+        var downloaded = (
+          await streamToBuffer(downloadBlockBlobResponse.readableStreamBody)
+        ).toString();
+        console.log("Downloaded blob content:", downloaded);
+      
+        // [Node.js only] A helper method used to read a Node.js readable stream into a Buffer
+        async function streamToBuffer(readableStream) {
+          return new Promise((resolve, reject) => {
+            const chunks = [];
+            readableStream.on("data", (data) => {
+              chunks.push(data instanceof Buffer ? data : Buffer.from(data));
+            });
+            readableStream.on("end", () => {
+              resolve(Buffer.concat(chunks));
+            });
+            readableStream.on("error", reject);
+          });
+        }
+
+        blobContents.push(downloaded);
     }
 
     context.res = {
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(blobs)
+        body: JSON.stringify(blobContents)
     };
 };
