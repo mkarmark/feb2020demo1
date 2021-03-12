@@ -42,12 +42,7 @@
   ],
   "navigationFallback": {
     "rewrite": "index.html",
-    "exclude": [ "*.{jpg,png}" ]
-  },
-  "responseOverrides": {
-    "404": {
-      "rewrite": "/notfound.html"
-    }
+    "exclude": [ "/api/HttpTrigger1" ]
   },
   "globalHeaders": {
     "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
